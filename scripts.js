@@ -137,3 +137,15 @@ window.onload = function () {
         renderCarrito()
     }
 }
+
+const botonComprar = document.getElementById('botonCompra')
+
+botonComprar.onclick = mostrarAlert
+
+function mostrarAlert(){
+    swal.fire({
+    title: 'COMPRA REALIZADA',
+    text: 'Agradecemos por su compra',
+    icon: 'success'
+    })
+}
