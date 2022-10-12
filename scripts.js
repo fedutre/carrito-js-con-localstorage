@@ -142,10 +142,39 @@ const botonComprar = document.getElementById('botonCompra')
 
 botonComprar.onclick = mostrarAlert
 
-function mostrarAlert(){
+function mostrarAlert() {
     swal.fire({
-    title: 'COMPRA REALIZADA',
-    text: 'Agradecemos por su compra',
-    icon: 'success'
+        title: 'COMPRA REALIZADA',
+        text: 'Agradecemos por su compra',
+        icon: 'success'
     })
+}
+
+function Login() {
+
+    let form = document.forms["formulario"];
+    let fd = new FormData(form);
+    let data = {};
+    for (let [key, prop] of fd) {
+        data[key] = prop;
+    }
+    VALUE = JSON.stringify(data, null, 2);
+    console.log(VALUE);
+    const url = "https://www.getpostman.com/collections/dc3a2b2ce35f95d6eab5";
+    const myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+    fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: VALUE,
+        })
+        .then(data => data.json())
+        .then(data => {
+            console.log(data)
+        })
+        .catch((err) => {
+            console.error(err);
+        })
 }
